@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useState } from "react";
 
+import DependencyGraph from "@/components/DependencyGraph";
 import {
   ApiError,
   createProject,
@@ -233,6 +234,13 @@ export default function Home() {
                   value={summary.debt_items_found}
                 />
               </dl>
+            </div>
+
+            <div>
+              <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+                Dependency Graph
+              </h2>
+              <DependencyGraph dependencies={project.dependencies} />
             </div>
 
             <div>
