@@ -1,0 +1,31 @@
+{
+  "name": "Living Architecture & Technical Debt Mapper",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces/LivingArchitectureAndTechnicalDebtMapper",
+  "shutdownAction": "stopCompose",
+  "remoteUser": "root",
+  "forwardPorts": [3000, 8000, 5432],
+  "portsAttributes": {
+    "3000": { "label": "Next.js frontend", "onAutoForward": "notify" },
+    "8000": { "label": "FastAPI backend", "onAutoForward": "notify" },
+    "5432": { "label": "PostgreSQL", "onAutoForward": "silent" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode-remote.remote-containers"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "editor.formatOnSave": true,
+        "[python]": { "editor.defaultFormatter": "ms-python.python" },
+        "eslint.workingDirectories": [{ "directory": "frontend", "changeProcessCWD": true }],
+        "files.exclude": { "**/__pycache__": true, "**/.pytest_cache": true }
+      }
+    }
+  }
+}
